@@ -34,20 +34,6 @@ BEGIN
 END
 
 
-CREATE FUNCTION UserExists
-    (@UserName NVARCHAR(50))
-RETURNS INT
-AS
-BEGIN
-    DECLARE @UserCount INT;
-    SELECT @UserCount = COUNT(*)
-    FROM Users
-    WHERE UserName = @UserName;
-
-    RETURN @UserCount;
-END
-
-
 CREATE PROCEDURE RegisterUser
     @UserName NVARCHAR(50),
     @Password NVARCHAR(100)

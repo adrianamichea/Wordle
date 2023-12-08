@@ -90,12 +90,13 @@ namespace Wordle.ViewModels
 
         private void UpdateAttemptsArray(string word)
         {
-            
-            for (int i = 0; i < Attempts.Length; i++)
+
+            for (int i = 0; i < _attempts.Length; i++)
             {
-                if (string.IsNullOrEmpty(Attempts[i]))
+                if (string.IsNullOrEmpty(_attempts[i]))
                 {
-                    Attempts[i] = word;
+                    _attempts[i] = word;
+                    OnPropertyChanged(nameof(Attempts));
                     break;
                 }
             }
@@ -142,7 +143,7 @@ namespace Wordle.ViewModels
             }
         }
 
-    private async void InitializeGameAsync()
+        private async void InitializeGameAsync()
         {
             try
             {
@@ -172,7 +173,7 @@ namespace Wordle.ViewModels
             }
         }
 
-            private string _displayWord;
+        private string _displayWord;
         public string DisplayWord
         {
             get { return _displayWord; }
@@ -207,4 +208,4 @@ namespace Wordle.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    }
+}

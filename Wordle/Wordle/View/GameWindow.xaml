@@ -7,20 +7,49 @@
         WindowStartupLocation="CenterScreen"
     Title="GameWindow" Height="450" Width="800">
 
-    <Grid>
+    <Grid Margin="10,10,10,0" Height="416" VerticalAlignment="Top">
+        <TextBlock Text="Please introduce a five-letter word:" Margin="64,10,501,371" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding UserInput}" MaxLength="5" Margin="318,9,370,371" Grid.RowSpan="2" />
+        <Button Content="Enter" Command="{Binding UpdateUserInputCommand}" Margin="496,9,216,372" Grid.RowSpan="2"/>
 
+        <TextBox Text="{Binding Attempts[0][0], Mode=OneWay}" Background="LightGray" Margin="184,102,526,267" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[0][1], Mode=OneWay}" Background="LightGray" Margin="254,102,455,267" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[0][2], Mode=OneWay}" Background="LightGray" Margin="325,102,383,267"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[0][3], Mode=OneWay}" Background="LightGray" Margin="397,102,311,267" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[0][4], Mode=OneWay}" Background="LightGray" Margin="469,102,240,267" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
 
-        <TextBlock Text="Please introduce a five-letter word:" Margin="70,36,495,345"/>
-        <TextBox Text="{Binding UserInput}" MaxLength="5" Margin="318,36,370,345" />
-        <Button Content="Enter" Command="{Binding UpdateUserInputCommand}" Margin="481,36,231,345"/>
+        <TextBox Text="{Binding Attempts[1][0], Mode=OneWay}" Background="LightGray" Margin="184,154,526,215" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[1][1], Mode=OneWay}" Background="LightGray" Margin="254,154,456,215" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[1][2], Mode=OneWay}" Background="LightGray" Margin="325,154,386,215"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[1][3], Mode=OneWay}" Background="LightGray" Margin="397,154,316,215" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[1][4], Mode=OneWay}" Background="LightGray" Margin="469,154,240,215" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"></TextBox>
 
-        <TextBox Text="{Binding UserInput[0], Mode=OneWay}" Height="30" Background="LightGray" Margin="318,155,0,249" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Width="30" />
-        <TextBox Text="{Binding UserInput[1], Mode=OneWay}"   Width="30" Height="30" Background="LightGray" Margin="359,155,411,249" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
-        <TextBox Text="{Binding UserInput[2], Mode=OneWay}"   Width="30" Background="LightGray" Margin="400,155,370,249" Height="30"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
-        <TextBox Text="{Binding UserInput[3], Mode=OneWay}"    Width="30" Height="30" Background="LightGray" Margin="450,155,320,249" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
-        <TextBox Text="{Binding UserInput[4], Mode=OneWay}"   Width="30" Height="30" Background="LightGray" Margin="495,155,275,249" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[2][0], Mode=OneWay}" Background="LightGray" Margin="184,208,526,161" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[2][1], Mode=OneWay}" Background="LightGray" Margin="254,208,458,161" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[2][2], Mode=OneWay}" Background="LightGray" Margin="325,208,387,161"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[2][3], Mode=OneWay}" Background="LightGray" Margin="397,208,316,161" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[2][4], Mode=OneWay}" Background="LightGray" Margin="469,208,240,161" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+
+        <TextBox Text="{Binding Attempts[3][0], Mode=OneWay}" Background="LightGray" Margin="184,260,526,109" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[3][1], Mode=OneWay}" Background="LightGray" Margin="254,260,458,109" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[3][2], Mode=OneWay}" Background="LightGray" Margin="325,260,386,109"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[3][3], Mode=OneWay}" Background="LightGray" Margin="397,260,316,109" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[3][4], Mode=OneWay}" Background="LightGray" Margin="469,260,240,109" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+
+      
+        <TextBox Text="{Binding Attempts[4][0], Mode=OneWay}" Background="LightGray" Margin="184,310,526,73" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[4][1], Mode=OneWay}" Background="LightGray" Margin="254,310,455,73" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[4][2], Mode=OneWay}" Background="LightGray" Margin="325,310,386,73"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[4][3], Mode=OneWay}" Background="LightGray" Margin="397,310,316,73" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[4][4], Mode=OneWay}" Background="LightGray" Margin="469,310,240,73" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+
+        <TextBox Text="{Binding Attempts[5][0], Mode=OneWay}" Background="LightGray" Margin="184,350,526,30" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[5][1], Mode=OneWay}" Background="LightGray" Margin="254,350,458,30" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <TextBox Text="{Binding Attempts[5][2], Mode=OneWay}" Background="LightGray" Margin="325,350,387,30"  BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[5][3], Mode=OneWay}" Background="LightGray" Margin="397,350,316,30" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox Text="{Binding Attempts[5][4], Mode=OneWay}" Background="LightGray" Margin="469,350,240,30" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" />
+
     </Grid>
-
-
+  
 
 </Window>

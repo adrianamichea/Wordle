@@ -3,10 +3,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using Wordle.Models;
 
@@ -14,9 +16,29 @@ namespace Wordle.ViewModels
 {
     public class GameViewModel : INotifyPropertyChanged
     {
-
+        #region private fields
+        private string _displayWord;
         private string[] _attempts = new string[6];
+        private string[] _codes = new string[6];
+        private readonly string api = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
+        private StringBuilder _userInput = new StringBuilder(5);
+        #endregion
+
+        #region public fields
+
+        public string DisplayWord
+        {
+            get { return _displayWord; }
+            set
+            {
+                if (_displayWord != value)
+                {
+                    _displayWord = value;
+                    OnPropertyChanged(nameof(DisplayWord));
+                }
+            }
+        }
         public string[] Attempts
         {
             get { return _attempts; }
@@ -30,12 +52,23 @@ namespace Wordle.ViewModels
             }
         }
 
+        public string[] Codes
+        {
+            get { return _codes; }
+            set
+            {
+                if (_codes != value)
+                {
+                    _codes = value;
+                    OnPropertyChanged(nameof(Codes));
+                }
+            }
+        }
+
+        #endregion 
 
 
-        private readonly string api = "https://api.dictionaryapi.dev/api/v2/entries/en/";
-
-        private StringBuilder _userInput = new StringBuilder(5);
-
+      
         public string UserInput
         {
             get { return _userInput.ToString(); }
@@ -50,7 +83,6 @@ namespace Wordle.ViewModels
             }
         }
         public RelayCommand UpdateUserInputCommand { get; }
-
 
 
         public GameViewModel()
@@ -70,7 +102,12 @@ namespace Wordle.ViewModels
                 {
                     if (isValidWord.Value)
                     {
-                        UpdateAttemptsArray(UserInput);
+                        UpdateAttemptsArray(UserInput.ToUpper());
+                        UpdateCodesArray(UserInput.ToUpper());
+                        CheckGameState();
+                       
+                        UserInput = string.Empty;
+                        
                     }
                     else
                     {
@@ -88,6 +125,19 @@ namespace Wordle.ViewModels
             }
         }
 
+        private void CheckGameState()
+        {
+            if (Attempts.Contains(DisplayWord.ToUpper()))
+            {
+                MessageBox.Show("You won!", "Congratulations", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+            }
+            else if (Attempts.All(a => !string.IsNullOrEmpty(a)))
+            {
+                MessageBox.Show("You lost!", "Game over", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+            }
+        }
         private void UpdateAttemptsArray(string word)
         {
 
@@ -99,13 +149,55 @@ namespace Wordle.ViewModels
                     OnPropertyChanged(nameof(Attempts));
                     break;
                 }
+            } 
+        }
+
+        private void UpdateCodesArray(string word)
+        {
+           
+            for (int i = 0; i < _codes.Length; i++)
+            {
+                if (string.IsNullOrEmpty(_codes[i]))
+                {
+                    _codes[i] = GetCode(word);
+                    OnPropertyChanged(nameof(Codes));
+                    break;
+                }
             }
-            UserInput = string.Empty;
+            OnPropertyChanged(nameof(Codes));
+        }
+
+        private string GetCode(string word)
+        {
+            Console.WriteLine($"Display word: {DisplayWord}");
+            Console.WriteLine($"Word: {word}");
+            StringBuilder code = new StringBuilder(5);
+            word = word.ToUpper();
+            DisplayWord = DisplayWord.ToUpper();
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] == DisplayWord[i])
+                {
+                    code.Append("G");
+                }
+                else if (DisplayWord.Contains(word[i]))
+                {
+                    code.Append("P");
+                }
+                else
+                {
+                    code.Append("U");
+                }
+            }
+
+            Console.WriteLine(code.ToString());
+            return code.ToString();
         }
 
         private void ShowErrorMessage(string message)
         {
             Console.WriteLine($"Error: {message}");
+            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
 
@@ -173,19 +265,7 @@ namespace Wordle.ViewModels
             }
         }
 
-        private string _displayWord;
-        public string DisplayWord
-        {
-            get { return _displayWord; }
-            set
-            {
-                if (_displayWord != value)
-                {
-                    _displayWord = value;
-                    OnPropertyChanged(nameof(DisplayWord));
-                }
-            }
-        }
+      
         private string errorMessage;
 
         public string ErrorMessage

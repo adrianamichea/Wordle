@@ -6,15 +6,14 @@ namespace Wordle.Services
 {
     public class AuthentificationService
     {
-        readonly private string _connectionString = "Data Source=DESKTOP-UHC6S14;Initial Catalog=WordleDB;Integrated Security=True;";
+        readonly private DatabaseConnection _databaseConnection = DatabaseConnection.Instance;
 
         public bool Authenticate(string username, string password, out string errorMessage)
         {
             errorMessage = null;
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = _databaseConnection.GetConnection())
             {
-                connection.Open();
 
                 using (SqlCommand command = new SqlCommand("dbo.AuthenticateUser", connection))
                 {
@@ -43,9 +42,9 @@ namespace Wordle.Services
         public bool Register(string username, string password, out string errorMessage)
         {
             errorMessage = null;
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = _databaseConnection.GetConnection())
             {
-                connection.Open();
+                
                 using (SqlCommand command = new SqlCommand("dbo.RegisterUser", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;

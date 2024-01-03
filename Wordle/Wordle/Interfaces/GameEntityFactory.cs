@@ -13,5 +13,10 @@ namespace Wordle.Interfaces
         {
             return new GameEntity();
         }
+
+        public IGameEntity CreateGameEntity(string initialWord)
+        {
+            return new GameEntity(initialWord.ToUpper());
+        }
     }
 }

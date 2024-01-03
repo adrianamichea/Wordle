@@ -9,5 +9,7 @@ namespace Wordle.Interfaces
     public interface IGameEntityFactory
     {
         IGameEntity CreateGameEntity();
+
+        IGameEntity CreateGameEntity(string initialWord);
     }
 }

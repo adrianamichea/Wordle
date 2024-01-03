@@ -1,16 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using Wordle.Models;
+using Wordle.Services;
 
 namespace Wordle.ViewModels
 {
@@ -18,7 +15,6 @@ namespace Wordle.ViewModels
     {
         #region private fields
         private GameEntity _gameEntity;
-        private readonly string api = "https://api.dictionaryapi.dev/api/v2/entries/en/";
         private StringBuilder _userInput = new StringBuilder(5);
         #endregion
 
@@ -65,7 +61,7 @@ namespace Wordle.ViewModels
         {
             try
             {
-                bool? isValidWord = await ValidateWord(UserInput);
+                bool? isValidWord = await WordApiService.Instance.ValidateWord(UserInput);
 
                 if (isValidWord.HasValue)
                 {
@@ -161,76 +157,37 @@ namespace Wordle.ViewModels
             return code.ToString();
         }
 
+
+
+
         private void ShowErrorMessage(string message)
         {
             Console.WriteLine($"Error: {message}");
             MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
-
-        private async Task<bool?> ValidateWord(string word)
-        {
-            try
-            {
-                string apiEndpoint = $"{api}{word}";
-
-                using (HttpClient client = new HttpClient())
-                {
-                    string response = await client.GetStringAsync(apiEndpoint);
-                    var definitions = JsonConvert.DeserializeObject<JArray>(response);
-
-                    if (definitions.Count > 0)
-                    {
-                        // string retrievedWord = definitions[0]["word"].ToString();
-                        //string partOfSpeech = definitions[0]["meanings"][0]["partOfSpeech"].ToString();
-                        //string definition = definitions[0]["meanings"][0]["definitions"][0]["definition"].ToString();
-                        return true;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine($"No definitions found for the word '{word}'.");
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error validating word: {ex.Message}");
-                return null;
-
-            }
-        }
-
+       
         private async void InitializeGameAsync()
         {
             try
             {
-                string apiEndpoint = "https://random-word-api.herokuapp.com/word?length=5";
+                string initialWord = await WordApiService.Instance.GetInitialWordAsync();
 
-                using (HttpClient client = new HttpClient())
+                if (initialWord != null)
                 {
-                    string response = await client.GetStringAsync(apiEndpoint);
-                    var words = JsonConvert.DeserializeObject<List<string>>(response);
-
-                    if (words != null && words.Count > 0)
-                    {
-                        string initialWord = words[0].ToUpper();
-                        GameEntity = new GameEntity(initialWord);
-                    }
+                    GameEntity = new GameEntity(initialWord.ToUpper());
+                }
+                else
+                {
+                    ErrorMessage = "Internet Error or unable to fetch the word. Please try again later.";
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error fetching word from API: {ex.Message}");
-
-                ErrorMessage = "Internet Error, please try again later";
-
-
+                Console.WriteLine($"Error initializing game: {ex.Message}");
+                ErrorMessage = "An error occurred while initializing the game.";
             }
         }
 
-      
         private string errorMessage;
 
         public string ErrorMessage
@@ -252,7 +209,6 @@ namespace Wordle.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         #endregion
     }
 }

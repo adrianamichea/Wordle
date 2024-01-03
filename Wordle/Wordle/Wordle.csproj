@@ -63,6 +63,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\AuthentificationService.cs" />
     <Compile Include="Services\DatabaseConnection.cs" />
+    <Compile Include="Services\WordApiService.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />

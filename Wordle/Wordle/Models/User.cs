@@ -1,8 +1,10 @@
 ﻿
 
+using Wordle.Interfaces;
+
 namespace Wordle.Models
 {
-    public class User
+    public class User: IUser
     {
         public int UserID { get; set; }
         public string UserName { get; set; }

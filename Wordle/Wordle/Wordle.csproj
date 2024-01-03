@@ -58,6 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Interfaces\GameEntityFactory.cs" />
+    <Compile Include="Interfaces\IGameEntityFactory.cs" />
+    <Compile Include="Interfaces\IGameEntity.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Interfaces\IUserFactory.cs" />
+    <Compile Include="Interfaces\UserFactory.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameEntity.cs" />
     <Compile Include="Models\User.cs" />

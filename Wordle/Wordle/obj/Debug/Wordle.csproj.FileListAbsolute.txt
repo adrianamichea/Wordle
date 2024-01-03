@@ -23,3 +23,27 @@ E:\uni projects\anul III\Semestrul I\SI-BOCA\Proiect Semestrial\Wordle\Wordle\Wo
 E:\uni projects\anul III\Semestrul I\SI-BOCA\Proiect Semestrial\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CopyComplete
 E:\uni projects\anul III\Semestrul I\SI-BOCA\Proiect Semestrial\Wordle\Wordle\Wordle\obj\Debug\Wordle.exe
 E:\uni projects\anul III\Semestrul I\SI-BOCA\Proiect Semestrial\Wordle\Wordle\Wordle\obj\Debug\Wordle.pdb
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\bin\Debug\Wordle.exe.config
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\bin\Debug\Wordle.exe
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\bin\Debug\Wordle.pdb
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\bin\Debug\Newtonsoft.Json.dll
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\bin\Debug\Newtonsoft.Json.xml
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.AssemblyReference.cache
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\MainWindow.g.cs
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\View\GameWindow.g.cs
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\View\LoginWindow.g.cs
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\View\MenuWindow.g.cs
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\App.g.cs
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle_MarkupCompile.cache
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle_MarkupCompile.lref
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\MainWindow.baml
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\View\GameWindow.baml
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\View\LoginWindow.baml
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\View\MenuWindow.baml
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.g.resources
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.Properties.Resources.resources
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.GenerateResource.cache
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CoreCompileInputs.cache
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CopyComplete
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.exe
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.pdb

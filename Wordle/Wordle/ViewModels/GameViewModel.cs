@@ -17,58 +17,24 @@ namespace Wordle.ViewModels
     public class GameViewModel : INotifyPropertyChanged
     {
         #region private fields
-        private string _displayWord;
-        private string[] _attempts = new string[6];
-        private string[] _codes = new string[6];
+        private GameEntity _gameEntity;
         private readonly string api = "https://api.dictionaryapi.dev/api/v2/entries/en/";
-
         private StringBuilder _userInput = new StringBuilder(5);
         #endregion
 
         #region public fields
-
-        public string DisplayWord
+        public GameEntity GameEntity
         {
-            get { return _displayWord; }
+            get { return _gameEntity; }
             set
             {
-                if (_displayWord != value)
+                if (_gameEntity != value)
                 {
-                    _displayWord = value;
-                    OnPropertyChanged(nameof(DisplayWord));
+                    _gameEntity = value;
+                    OnPropertyChanged(nameof(GameEntity));
                 }
             }
         }
-        public string[] Attempts
-        {
-            get { return _attempts; }
-            set
-            {
-                if (_attempts != value)
-                {
-                    _attempts = value;
-                    OnPropertyChanged(nameof(Attempts));
-                }
-            }
-        }
-
-        public string[] Codes
-        {
-            get { return _codes; }
-            set
-            {
-                if (_codes != value)
-                {
-                    _codes = value;
-                    OnPropertyChanged(nameof(Codes));
-                }
-            }
-        }
-
-        #endregion 
-
-
-      
         public string UserInput
         {
             get { return _userInput.ToString(); }
@@ -91,6 +57,9 @@ namespace Wordle.ViewModels
             UpdateUserInputCommand = new RelayCommand(UpdateUserInput);
 
         }
+        #endregion
+
+        #region methods
 
         private async void UpdateUserInput()
         {
@@ -105,9 +74,7 @@ namespace Wordle.ViewModels
                         UpdateAttemptsArray(UserInput.ToUpper());
                         UpdateCodesArray(UserInput.ToUpper());
                         CheckGameState();
-                       
                         UserInput = string.Empty;
-                        
                     }
                     else
                     {
@@ -127,12 +94,12 @@ namespace Wordle.ViewModels
 
         private void CheckGameState()
         {
-            if (Attempts.Contains(DisplayWord.ToUpper()))
+            if (GameEntity.Attempts.Contains(GameEntity.SecretWord.ToUpper()))
             {
                 MessageBox.Show("You won!", "Congratulations", MessageBoxButton.OK, MessageBoxImage.Information);
                 
             }
-            else if (Attempts.All(a => !string.IsNullOrEmpty(a)))
+            else if (GameEntity.Attempts.All(a => !string.IsNullOrEmpty(a)))
             {
                 MessageBox.Show("You lost!", "Game over", MessageBoxButton.OK, MessageBoxImage.Information);
                 
@@ -141,12 +108,12 @@ namespace Wordle.ViewModels
         private void UpdateAttemptsArray(string word)
         {
 
-            for (int i = 0; i < _attempts.Length; i++)
+            for (int i = 0; i < GameEntity.Attempts.Length; i++)
             {
-                if (string.IsNullOrEmpty(_attempts[i]))
+                if (string.IsNullOrEmpty(GameEntity.Attempts[i]))
                 {
-                    _attempts[i] = word;
-                    OnPropertyChanged(nameof(Attempts));
+                    GameEntity.Attempts[i] = word;
+                    OnPropertyChanged(nameof(GameEntity.Attempts));
                     break;
                 }
             } 
@@ -155,32 +122,32 @@ namespace Wordle.ViewModels
         private void UpdateCodesArray(string word)
         {
            
-            for (int i = 0; i < _codes.Length; i++)
+            for (int i = 0; i < GameEntity.Codes.Length; i++)
             {
-                if (string.IsNullOrEmpty(_codes[i]))
+                if (string.IsNullOrEmpty(GameEntity.Codes[i]))
                 {
-                    _codes[i] = GetCode(word);
-                    OnPropertyChanged(nameof(Codes));
+                    GameEntity.Codes[i] = GetCode(word);
+                    OnPropertyChanged(nameof(GameEntity));
                     break;
                 }
             }
-            OnPropertyChanged(nameof(Codes));
+            OnPropertyChanged(nameof(GameEntity));
         }
 
         private string GetCode(string word)
         {
-            Console.WriteLine($"Display word: {DisplayWord}");
+            Console.WriteLine($"Display word: {GameEntity.SecretWord}");
             Console.WriteLine($"Word: {word}");
             StringBuilder code = new StringBuilder(5);
             word = word.ToUpper();
-            DisplayWord = DisplayWord.ToUpper();
+            GameEntity.SecretWord = GameEntity.SecretWord.ToUpper();
             for (int i = 0; i < word.Length; i++)
             {
-                if (word[i] == DisplayWord[i])
+                if (word[i] == GameEntity.SecretWord[i])
                 {
                     code.Append("G");
                 }
-                else if (DisplayWord.Contains(word[i]))
+                else if (GameEntity.SecretWord.Contains(word[i]))
                 {
                     code.Append("P");
                 }
@@ -249,9 +216,7 @@ namespace Wordle.ViewModels
                     if (words != null && words.Count > 0)
                     {
                         string initialWord = words[0].ToUpper();
-                        // model = new Game(initialWord);
-                        // DisplayWord = model.DisplayWord; // Set DisplayWord property
-                        DisplayWord = initialWord;
+                        GameEntity = new GameEntity(initialWord);
                     }
                 }
             }
@@ -287,5 +252,7 @@ namespace Wordle.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 }

@@ -34,44 +34,42 @@
         <TextBox Text="{Binding UserInput}" MaxLength="5" Margin="318,9,370,371" Grid.RowSpan="2" />
         <Button Content="Enter" Command="{Binding UpdateUserInputCommand}" Margin="496,9,216,372" Grid.RowSpan="2"/>
 
-        <TextBox Text="{Binding Attempts[0][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,102,526,267" Tag="{Binding Codes[0][0]}"/>
-        <TextBox Text="{Binding Attempts[0][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,102,455,267" Tag="{Binding Codes[0][1]}"/>
-        <TextBox Text="{Binding Attempts[0][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,102,383,267" Tag="{Binding Codes[0][2]}"/>
-        <TextBox Text="{Binding Attempts[0][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,102,311,267" Tag="{Binding Codes[0][3]}"/>
-        <TextBox Text="{Binding Attempts[0][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,102,240,267" Tag="{Binding Codes[0][4]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[0][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,102,526,267" Tag="{Binding GameEntity.Codes[0][0]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[0][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,102,455,267" Tag="{Binding GameEntity.Codes[0][1]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[0][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,102,383,267" Tag="{Binding GameEntity.Codes[0][2]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[0][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,102,311,267" Tag="{Binding GameEntity.Codes[0][3]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[0][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,102,240,267" Tag="{Binding GameEntity.Codes[0][4]}"/>
 
-        <TextBox Text="{Binding Attempts[1][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,154,526,215" Tag="{Binding Codes[1][0]}"/>
-        <TextBox Text="{Binding Attempts[1][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,154,456,215" Tag="{Binding Codes[1][1]}"/>
-        <TextBox Text="{Binding Attempts[1][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,154,386,215" Tag="{Binding Codes[1][2]}"/>
-        <TextBox Text="{Binding Attempts[1][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,154,316,215" Tag="{Binding Codes[1][3]}"/>
-        <TextBox Text="{Binding Attempts[1][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,154,240,215" Tag="{Binding Codes[1][4]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[1][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,154,526,215" Tag="{Binding GameEntity.Codes[1][0]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[1][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,154,456,215" Tag="{Binding GameEntity.Codes[1][1]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[1][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,154,386,215" Tag="{Binding GameEntity.Codes[1][2]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[1][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,154,316,215" Tag="{Binding GameEntity.Codes[1][3]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[1][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,154,240,215" Tag="{Binding GameEntity.Codes[1][4]}"/>
 
-        <TextBox Text="{Binding Attempts[2][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,208,526,161" Tag="{Binding Codes[2][0]}"/>
-        <TextBox Text="{Binding Attempts[2][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,208,458,161" Tag="{Binding Codes[2][1]}"/>
-        <TextBox Text="{Binding Attempts[2][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,208,387,161" Tag="{Binding Codes[2][2]}"/>
-        <TextBox Text="{Binding Attempts[2][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,208,316,161" Tag="{Binding Codes[2][3]}"/>
-        <TextBox Text="{Binding Attempts[2][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,208,240,161" Tag="{Binding Codes[2][4]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[2][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,208,526,161" Tag="{Binding GameEntity.Codes[2][0]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[2][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,208,458,161" Tag="{Binding GameEntity.Codes[2][1]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[2][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,208,387,161" Tag="{Binding GameEntity.Codes[2][2]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[2][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,208,316,161" Tag="{Binding GameEntity.Codes[2][3]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[2][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,208,240,161" Tag="{Binding GameEntity.Codes[2][4]}"/>
 
-        <TextBox Text="{Binding Attempts[3][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,260,526,109" Tag="{Binding Codes[3][0]}"/>
-        <TextBox Text="{Binding Attempts[3][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,260,458,109" Tag="{Binding Codes[3][1]}"/>
-        <TextBox Text="{Binding Attempts[3][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,260,386,109" Tag="{Binding Codes[3][2]}"/>
-        <TextBox Text="{Binding Attempts[3][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,260,316,109" Tag="{Binding Codes[3][3]}"/>
-        <TextBox Text="{Binding Attempts[3][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,260,240,109" Tag="{Binding Codes[3][4]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[3][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,260,526,109" Tag="{Binding GameEntity.Codes[3][0]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[3][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,260,458,109" Tag="{Binding GameEntity.Codes[3][1]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[3][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,260,386,109" Tag="{Binding GameEntity.Codes[3][2]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[3][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,260,316,109" Tag="{Binding GameEntity.Codes[3][3]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[3][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,260,240,109" Tag="{Binding GameEntity.Codes[3][4]}"/>
 
 
-        <TextBox Text="{Binding Attempts[4][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,310,526,73" Tag="{Binding Codes[4][0]}"/>
-        <TextBox Text="{Binding Attempts[4][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,310,455,73" Tag="{Binding Codes[4][1]}"/>
-        <TextBox Text="{Binding Attempts[4][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,310,386,73" Tag="{Binding Codes[4][2]}"/>
-        <TextBox Text="{Binding Attempts[4][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,310,316,73" Tag="{Binding Codes[4][3]}"/>
-        <TextBox Text="{Binding Attempts[4][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,310,240,73" Tag="{Binding Codes[4][4]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[4][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,310,526,73" Tag="{Binding GameEntity.Codes[4][0]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[4][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,310,455,73" Tag="{Binding GameEntity.Codes[4][1]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[4][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,310,386,73" Tag="{Binding GameEntity.Codes[4][2]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[4][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,310,316,73" Tag="{Binding GameEntity.Codes[4][3]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[4][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,310,240,73" Tag="{Binding GameEntity.Codes[4][4]}"/>
 
-        <TextBox Text="{Binding Attempts[5][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,350,526,30" Tag="{Binding Codes[5][0]}"/>
-        <TextBox Text="{Binding Attempts[5][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,350,458,30" Tag="{Binding Codes[5][1]}"/>
-        <TextBox Text="{Binding Attempts[5][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,350,387,30" Tag="{Binding Codes[5][2]}"/>
-        <TextBox Text="{Binding Attempts[5][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,350,316,30" Tag="{Binding Codes[5][3]}"/>
-        <TextBox Text="{Binding Attempts[5][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,350,240,30" Tag="{Binding Codes[5][4]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[5][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,350,526,30" Tag="{Binding GameEntity.Codes[5][0]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[5][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,350,458,30" Tag="{Binding GameEntity.Codes[5][1]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[5][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,350,387,30" Tag="{Binding GameEntity.Codes[5][2]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[5][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,350,316,30" Tag="{Binding GameEntity.Codes[5][3]}"/>
+        <TextBox Text="{Binding GameEntity.Attempts[5][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,350,240,30" Tag="{Binding GameEntity.Codes[5][4]}"/>
 
     </Grid>
-  
-
 </Window>

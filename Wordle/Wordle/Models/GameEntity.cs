@@ -33,21 +33,6 @@ namespace Wordle.Models
             }
         }
 
-
-        private DateTime _date { get; set; }
-
-        public DateTime Date
-        {
-            get { return _date; }
-            set
-            {
-                if (_date != value)
-                {
-                    _date = value;
-                }
-            }
-        }
-
         private string[] _attempts { get; set; }
 
         public string[] Attempts
@@ -77,11 +62,10 @@ namespace Wordle.Models
         }
         public GameEntity() { }
 
-        public GameEntity(int userID, string secretWord, DateTime date, string[] attempts, string[] codes)
+        public GameEntity(int userID, string secretWord,string[] attempts, string[] codes)
         {
             UserID = userID;
             SecretWord = secretWord;
-            Date = date;
             Attempts = attempts;
             Codes = codes;
         }
@@ -90,7 +74,6 @@ namespace Wordle.Models
             SecretWord = initialWord;
             Attempts = new string[6];
             Codes = new string[6];
-            Date = DateTime.Now;
         }
 
     }

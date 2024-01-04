@@ -61,6 +61,23 @@ namespace Wordle.ViewModels
 
         }
 
+        public GameViewModel(GameEntity gameEntity)
+        {
+            GameEntity = gameEntity;
+
+            Console.WriteLine("GameEntity: " + gameEntity.UserID + " " + gameEntity.SecretWord);
+            for (int i = 0; i < gameEntity.Attempts.Length; i++)
+            {
+                Console.WriteLine("GameEntityAttempt " + i + gameEntity.Attempts[i]);
+            }
+            for (int i = 0; i < gameEntity.Codes.Length; i++)
+            {
+                Console.WriteLine("GameEntityCodes " + i + gameEntity.Codes[i]);
+            }
+
+            OnPropertyChanged(nameof(GameEntity));
+
+        }
         public GameViewModel()
         {
         }

@@ -8,23 +8,37 @@ namespace Wordle.Services
         private static readonly Lazy<DatabaseConnection> lazyInstance = new Lazy<DatabaseConnection>(() => new DatabaseConnection());
 
         private SqlConnection connection;
+        string connectionString = "Data Source=DESKTOP-UHC6S14;Initial Catalog=WordleDB;Integrated Security=True;";
 
         private DatabaseConnection()
         {
            // string connectionString = "Data Source=DESKTOP-O9QBF35;Initial Catalog=WordleDB;Integrated Security=True;";
-            string connectionString = "Data Source=DESKTOP-UHC6S14;Initial Catalog=WordleDB;Integrated Security=True;";
+           // string connectionString = "Data Source=DESKTOP-UHC6S14;Initial Catalog=WordleDB;Integrated Security=True;";
             connection = new SqlConnection(connectionString);
         }
 
         public static DatabaseConnection Instance => lazyInstance.Value;
 
+        //public SqlConnection GetConnection()
+        //{
+        //    if (connection.State != System.Data.ConnectionState.Open)
+        //    {
+        //        connection.Open();
+        //    }
+        //    return connection;
+        //}
+
         public SqlConnection GetConnection()
         {
-            if (connection.State != System.Data.ConnectionState.Open)
+            SqlConnection newConnection = new SqlConnection(connectionString);
+
+            if (newConnection.State != System.Data.ConnectionState.Open)
             {
-                connection.Open();
+                newConnection.Open();
             }
-            return connection;
+
+            return newConnection;
         }
+
     }
 }

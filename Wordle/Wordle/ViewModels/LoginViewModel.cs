@@ -21,7 +21,7 @@ namespace Wordle.ViewModels
             set { _password = value; OnPropertyChanged(); }
         }
 
-        private AuthentificationService authService = new AuthentificationService();
+        private AuthentificationService authService =AuthentificationService.Instance;
 
         public ICommand LoginCommand { get; }
 

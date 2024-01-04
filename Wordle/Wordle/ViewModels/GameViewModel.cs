@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -142,20 +143,42 @@ namespace Wordle.ViewModels
 
         private string GetCode(string word)
         {
-            Console.WriteLine($"Display word: {GameEntity.SecretWord}");
+            Console.WriteLine($"Secret Word word: {GameEntity.SecretWord}");
             Console.WriteLine($"Word: {word}");
             StringBuilder code = new StringBuilder(5);
             word = word.ToUpper();
             GameEntity.SecretWord = GameEntity.SecretWord.ToUpper();
             for (int i = 0; i < word.Length; i++)
             {
+                Console.WriteLine(code.ToString());
+
                 if (word[i] == GameEntity.SecretWord[i])
                 {
                     code.Append("G");
                 }
-                else if (GameEntity.SecretWord.Contains(word[i]) && GameEntity.SecretWord.Count(c => c == word[i]) <= code.ToString().Count(c => c == word[i]))
+                else if (GameEntity.SecretWord.Contains(word[i]))
                 {
-                    code.Append("P");
+                    int countGreenPositions = 0;
+                    for (int j = i; j < word.Length; j++)
+                    {
+                        if (word[j] == GameEntity.SecretWord[j] && word[j] == word[i])
+                        {
+                            countGreenPositions++;
+                        }
+                    }
+
+                    int countAlreadyFoundPartialPositions = 0;
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (word[j] == word[i] && code[j] == 'P')
+                        {
+                            countAlreadyFoundPartialPositions++;
+                        }
+                    }
+                    if (countGreenPositions +countAlreadyFoundPartialPositions< GameEntity.SecretWord.Count(c => c == word[i]))
+                        code.Append("P");
+                    else
+                        code.Append('U');
                 }
                 else
                 {
@@ -163,7 +186,6 @@ namespace Wordle.ViewModels
                 }
             }
 
-            Console.WriteLine(code.ToString());
             return code.ToString();
         }
 

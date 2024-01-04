@@ -14,7 +14,6 @@ namespace Wordle.Services
 
         private int? _authenticatedUserId;
 
-
         private AuthentificationService()
         {
 

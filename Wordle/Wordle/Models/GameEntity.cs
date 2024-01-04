@@ -8,6 +8,7 @@ namespace Wordle.Models
     {
         private int _userID { get; set; }
 
+
         public int UserID
         {
             get { return _userID; }
@@ -60,7 +61,10 @@ namespace Wordle.Models
                 }
             }
         }
-        public GameEntity() { }
+        public GameEntity() {
+            Attempts = new string[6];
+            Codes = new string[6];
+        }
 
         public GameEntity(int userID, string secretWord,string[] attempts, string[] codes)
         {

@@ -36,11 +36,14 @@ namespace Wordle.Services
                             GameEntity gameEntity = new GameEntity();
                             gameEntity.UserID = (int)reader["UserID"];
                             gameEntity.SecretWord = (string)reader["SecretWord"];
-                            gameEntity.Attempts = ((string)reader["Attempts"]).Split(',');
-                            gameEntity.Codes = ((string)reader["Codes"]).Split(',');
-                            errorMessage = null;
+                            string[] attemptsFromDb = ((string)reader["Attempts"]).Split(',');
+                            gameEntity.Attempts = new string[6];
+                            Array.Copy(attemptsFromDb, gameEntity.Attempts, Math.Min(attemptsFromDb.Length, gameEntity.Attempts.Length));
+                            string[] codesFromDb = ((string)reader["Codes"]).Split(',');
+                            gameEntity.Codes = new string[6];
+                            Array.Copy(codesFromDb, gameEntity.Codes, Math.Min(codesFromDb.Length, gameEntity.Codes.Length));
 
-                            
+                            errorMessage = null;
                             return gameEntity;
                         }
                         else

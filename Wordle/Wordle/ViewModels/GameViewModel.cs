@@ -61,21 +61,13 @@ namespace Wordle.ViewModels
 
         }
 
-        public GameViewModel(GameEntity gameEntity)
+        public GameViewModel(GameEntity gameEntity, IGameEntityFactory gameEntityFactory)
         {
-            GameEntity = gameEntity;
+            this.gameEntityFactory = gameEntityFactory ?? throw new ArgumentNullException(nameof(gameEntityFactory));
+            ResumeGame(gameEntity);
+            UpdateUserInputCommand = new RelayCommand(UpdateUserInput);
 
-            Console.WriteLine("GameEntity: " + gameEntity.UserID + " " + gameEntity.SecretWord);
-            for (int i = 0; i < gameEntity.Attempts.Length; i++)
-            {
-                Console.WriteLine("GameEntityAttempt " + i + gameEntity.Attempts[i]);
-            }
-            for (int i = 0; i < gameEntity.Codes.Length; i++)
-            {
-                Console.WriteLine("GameEntityCodes " + i + gameEntity.Codes[i]);
-            }
-
-            OnPropertyChanged(nameof(GameEntity));
+            Console.WriteLine("GameEntityCodes " + gameEntity.Codes.Length);
 
         }
         public GameViewModel()
@@ -87,6 +79,7 @@ namespace Wordle.ViewModels
 
         private async void UpdateUserInput()
         {
+            Console.WriteLine("User Input", UserInput.ToString());
             try
             {
                 bool? isValidWord = await WordApiService.Instance.ValidateWord(UserInput);
@@ -213,6 +206,23 @@ namespace Wordle.ViewModels
         {
             Console.WriteLine($"Error: {message}");
             MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void ResumeGame(GameEntity gameEntity)
+        {
+            int userID = gameEntity.UserID;
+            string secretWord = gameEntity.SecretWord;
+            string[] attempts = gameEntity.Attempts;
+            string[] codes = gameEntity.Codes;
+            if (gameEntityFactory != null)
+            {
+                GameEntity = (GameEntity)gameEntityFactory.ResumeGameEntity(userID, secretWord, attempts, codes);
+            }
+            else
+            {
+                // Handle the case where gameEntityFactory is null (log an error, throw an exception, etc.)
+                Console.WriteLine("Error: gameEntityFactory is not initialized.");
+            }
         }
        
         private async void InitializeGameAsync()

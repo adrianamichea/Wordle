@@ -18,5 +18,10 @@ namespace Wordle.Interfaces
         {
             return new GameEntity(initialWord.ToUpper());
         }
+
+        public IGameEntity ResumeGameEntity(int userID, string secretWord, string[] attempts, string[] codes)
+        {
+            return new GameEntity(userID, secretWord, attempts, codes); 
+        }
     }
 }

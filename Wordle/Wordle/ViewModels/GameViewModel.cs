@@ -17,8 +17,8 @@ namespace Wordle.ViewModels
         #region private fields
         private GameEntity _gameEntity;
         private StringBuilder _userInput = new StringBuilder(5);
-        private readonly IUserFactory userFactory;
         private readonly IGameEntityFactory gameEntityFactory;
+        private readonly IWordGenerationStrategy wordGenerationStrategy;
 
         #endregion
 
@@ -51,10 +51,10 @@ namespace Wordle.ViewModels
         public RelayCommand UpdateUserInputCommand { get; }
 
 
-        public GameViewModel(IGameEntityFactory gameEntityFactory)
+        public GameViewModel(IGameEntityFactory gameEntityFactory, IWordGenerationStrategy wordGenerationStrategy)
         {
-            this.userFactory = userFactory ?? throw new ArgumentNullException(nameof(userFactory));
-
+            this.gameEntityFactory = gameEntityFactory ?? throw new ArgumentNullException(nameof(gameEntityFactory));
+            this.wordGenerationStrategy = wordGenerationStrategy ?? throw new ArgumentNullException(nameof(wordGenerationStrategy));
             InitializeGameAsync();
             UpdateUserInputCommand = new RelayCommand(UpdateUserInput);
 
@@ -153,7 +153,7 @@ namespace Wordle.ViewModels
                 {
                     code.Append("G");
                 }
-                else if (GameEntity.SecretWord.Contains(word[i]))
+                else if (GameEntity.SecretWord.Contains(word[i]) && GameEntity.SecretWord.Count(c => c == word[i]) <= code.ToString().Count(c => c == word[i]))
                 {
                     code.Append("P");
                 }
@@ -180,7 +180,7 @@ namespace Wordle.ViewModels
         {
             try
             {
-                string initialWord = await WordApiService.Instance.GetInitialWordAsync();
+                string initialWord = await wordGenerationStrategy.GetInitialWordAsync();
 
                 if (initialWord != null)
                 {

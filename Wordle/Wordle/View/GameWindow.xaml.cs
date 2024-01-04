@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wordle.Interfaces;
+using Wordle.Strategies;
 using Wordle.ViewModels;
 
 namespace Wordle.View
@@ -26,8 +27,11 @@ namespace Wordle.View
 
         public GameWindow()
         {
+            
             InitializeComponent();
-            viewModel = new GameViewModel();
+            var gameEntityFactory = new GameEntityFactory();
+            var wordGenerationStrategy = new RandomWordGenerationStrategy();
+            viewModel = new GameViewModel(gameEntityFactory, wordGenerationStrategy);
             DataContext = viewModel;
 
             Debug.WriteLine("GameWindow constructor called. DataContext set.");

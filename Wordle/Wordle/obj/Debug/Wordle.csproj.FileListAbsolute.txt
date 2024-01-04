@@ -47,3 +47,4 @@ C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.C
 C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CopyComplete
 C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.exe
 C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle.pdb
+C:\Users\smeur\OneDrive\Documents\Wordle\Wordle\Wordle\obj\Debug\Wordle_Content.g.cs

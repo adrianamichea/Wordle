@@ -63,6 +63,7 @@
     <Compile Include="Interfaces\IGameEntity.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Interfaces\IUserFactory.cs" />
+    <Compile Include="Interfaces\IWordGenerationStrategy.cs" />
     <Compile Include="Interfaces\UserFactory.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameEntity.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="Services\AuthentificationService.cs" />
     <Compile Include="Services\DatabaseConnection.cs" />
     <Compile Include="Services\WordApiService.cs" />
+    <Compile Include="Strategies\DefaultWordGenerationStrategy.cs" />
+    <Compile Include="Strategies\RandomWordGenerationStrategy.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
@@ -139,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

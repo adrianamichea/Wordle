@@ -129,7 +129,7 @@ namespace Wordle.ViewModels
             }
             else if (GameEntity.Attempts.All(a => !string.IsNullOrEmpty(a)))
             {
-                MessageBox.Show("You lost!", "Game over", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You lost!", "Game over, the secret word was " + GameEntity.SecretWord, MessageBoxButton.OK, MessageBoxImage.Information);
                 
             }
         }

@@ -40,7 +40,7 @@ namespace Wordle.ViewModels
             
         }
 
-        private void Login()
+        public void Login()
         {
 
             bool isAuthenticated = authService.Authenticate(Username, Password, out string errorMessage);

@@ -81,14 +81,14 @@ namespace Wordle.ViewModels
 
         #region methods
 
-        private void SaveGame()
+        public void SaveGame()
         {
             GameService gameService = new GameService();
             gameService.updateLastGamePlayedByUser(GameEntity,out errorMessage);
 
         }
 
-        private async void UpdateUserInput()
+        public async void UpdateUserInput()
         {
             Console.WriteLine("User Input", UserInput.ToString());
             try
@@ -120,7 +120,7 @@ namespace Wordle.ViewModels
             }
         }
 
-        private void CheckGameState()
+        public void CheckGameState()
         {
             if (GameEntity.Attempts.Contains(GameEntity.SecretWord.ToUpper()))
             {
@@ -133,7 +133,7 @@ namespace Wordle.ViewModels
                 
             }
         }
-        private void UpdateAttemptsArray(string word)
+        public void UpdateAttemptsArray(string word)
         {
 
             for (int i = 0; i < GameEntity.Attempts.Length; i++)
@@ -147,7 +147,7 @@ namespace Wordle.ViewModels
             } 
         }
 
-        private void UpdateCodesArray(string word)
+        public void UpdateCodesArray(string word)
         {
            
             for (int i = 0; i < GameEntity.Codes.Length; i++)
@@ -162,7 +162,7 @@ namespace Wordle.ViewModels
             OnPropertyChanged(nameof(GameEntity));
         }
 
-        private string GetCode(string word)
+        public string GetCode(string word)
         {
             Console.WriteLine($"Secret Word word: {GameEntity.SecretWord}");
             Console.WriteLine($"Word: {word}");
@@ -213,13 +213,13 @@ namespace Wordle.ViewModels
 
 
 
-        private void ShowErrorMessage(string message)
+        public void ShowErrorMessage(string message)
         {
             Console.WriteLine($"Error: {message}");
             MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void ResumeGame(GameEntity gameEntity)
+        public void ResumeGame(GameEntity gameEntity)
         {
             int userID = gameEntity.UserID;
             string secretWord = gameEntity.SecretWord;
@@ -236,7 +236,7 @@ namespace Wordle.ViewModels
             }
         }
        
-        private async void InitializeGameAsync()
+        public async void InitializeGameAsync()
         {
             try
             {

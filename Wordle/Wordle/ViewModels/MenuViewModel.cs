@@ -10,11 +10,8 @@ namespace Wordle.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
-
         public ICommand PlayNewGameCommand { get; }
-
         public ICommand ResumeLastGameCommand { get; }
-
 
         public MenuViewModel()
         {
@@ -24,8 +21,6 @@ namespace Wordle.ViewModels
 
         private void PlayNewGame()
         {
-            Console.WriteLine("Authenticated user id din playnewgame: " + AuthentificationService.Instance.GetAuthenticatedUserId());
-
             GameWindow newGameWindow = new GameWindow();
             newGameWindow.Show();
         }

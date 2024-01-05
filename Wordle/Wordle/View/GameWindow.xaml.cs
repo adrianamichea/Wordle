@@ -34,8 +34,6 @@ namespace Wordle.View
             viewModel = new GameViewModel(gameEntityFactory, wordGenerationStrategy);
             DataContext = viewModel;
 
-            Debug.WriteLine("GameWindow constructor called. DataContext set.");
-
         }
 
         

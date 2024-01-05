@@ -49,7 +49,6 @@ namespace Wordle.Services
         public bool Authenticate(string username, string password, out string errorMessage)
         {
             errorMessage = null;
-            //Console.WriteLine("Connection State Before: " + connection.State);
 
             using (SqlConnection connection = _databaseConnection.GetConnection())
             {

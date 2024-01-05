@@ -70,9 +70,6 @@ namespace Wordle.ViewModels
             ResumeGame(gameEntity);
             UpdateUserInputCommand = new RelayCommand(UpdateUserInput);
             SaveGameCommand = new RelayCommand(SaveGame);
-
-            Console.WriteLine("GameEntityCodes " + gameEntity.Codes.Length);
-
         }
         public GameViewModel()
         {
@@ -164,8 +161,6 @@ namespace Wordle.ViewModels
 
         public string GetCode(string word)
         {
-            Console.WriteLine($"Secret Word word: {GameEntity.SecretWord}");
-            Console.WriteLine($"Word: {word}");
             StringBuilder code = new StringBuilder(5);
             word = word.ToUpper();
             GameEntity.SecretWord = GameEntity.SecretWord.ToUpper();
@@ -231,7 +226,6 @@ namespace Wordle.ViewModels
             }
             else
             {
-                // Handle the case where gameEntityFactory is null (log an error, throw an exception, etc.)
                 Console.WriteLine("Error: gameEntityFactory is not initialized.");
             }
         }

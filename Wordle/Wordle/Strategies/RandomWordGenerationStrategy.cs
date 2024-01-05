@@ -12,14 +12,11 @@ namespace Wordle.Strategies
     {
         public async Task<string> GetInitialWordAsync()
         {
-            // Logic to get a random word from a specific source
-            // Example: Fetch from an API
             return await FetchRandomWordFromApi();
         }
 
         private async Task<string> FetchRandomWordFromApi()
         {
-            // Implementation to fetch a random word from an API
             return await WordApiService.Instance.GetInitialWordAsync();
         }
     }

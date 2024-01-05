@@ -19,15 +19,6 @@ namespace Wordle.Services
 
         public static DatabaseConnection Instance => lazyInstance.Value;
 
-        //public SqlConnection GetConnection()
-        //{
-        //    if (connection.State != System.Data.ConnectionState.Open)
-        //    {
-        //        connection.Open();
-        //    }
-        //    return connection;
-        //}
-
         public SqlConnection GetConnection()
         {
             SqlConnection newConnection = new SqlConnection(connectionString);

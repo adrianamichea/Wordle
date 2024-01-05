@@ -11,14 +11,11 @@ namespace Wordle.Strategies
     {
         public async Task<string> GetInitialWordAsync()
         {
-            // Default logic to get a random word
-            // Example: Fetch from a different source
             return FetchDefaultWordFromAnotherSource();
         }
 
         private string FetchDefaultWordFromAnotherSource()
         {
-            // Implementation to fetch a default word from another source
             string[] fiveLetterWords = {
     "apple",
     "zebra",
@@ -35,7 +32,6 @@ namespace Wordle.Strategies
             Random random = new Random();
             int randomIndex = random.Next(0, fiveLetterWords.Length);
 
-            // Get the random word
             string randomWord = fiveLetterWords[randomIndex];
             return randomWord;
         }

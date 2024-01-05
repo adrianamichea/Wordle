@@ -10,14 +10,6 @@ USE WordleDB;
 );
 
 
-
-INSERT INTO Users (UserName, Password) 
-VALUES ('user1', 'parola1'), 
-       ('user2', 'parola2');
-
-
-SELECT * FROM Users;
-
 CREATE PROCEDURE AuthenticateUser
     @UserName NVARCHAR(50),
     @Password NVARCHAR(100)
@@ -49,8 +41,6 @@ BEGIN
 END
 
 
---created table LastGame  (userid, secretWord,date, attempts, codes)
-
 CREATE TABLE LastGame (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     UserID INT NOT NULL,
@@ -81,7 +71,6 @@ BEGIN
     WHERE UserID = @UserID;
 END
 
---update last game. if user has no last game, insert a new one
 CREATE PROCEDURE UpdateLastGame
     @UserID INT,
     @SecretWord NVARCHAR(5),

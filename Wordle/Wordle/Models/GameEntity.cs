@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Wordle.Interfaces;
+using Wordle.Services;
 
 namespace Wordle.Models
 {
@@ -75,6 +76,7 @@ namespace Wordle.Models
         }
         public GameEntity(string initialWord)
         {
+            UserID= (int)AuthentificationService.Instance.GetAuthenticatedUserId();
             SecretWord = initialWord;
             Attempts = new string[6];
             Codes = new string[6];

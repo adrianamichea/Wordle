@@ -51,6 +51,8 @@ namespace Wordle.ViewModels
         }
         public RelayCommand UpdateUserInputCommand { get; }
 
+        public RelayCommand SaveGameCommand { get; }
+
 
         public GameViewModel(IGameEntityFactory gameEntityFactory, IWordGenerationStrategy wordGenerationStrategy)
         {
@@ -58,6 +60,7 @@ namespace Wordle.ViewModels
             this.wordGenerationStrategy = wordGenerationStrategy ?? throw new ArgumentNullException(nameof(wordGenerationStrategy));
             InitializeGameAsync();
             UpdateUserInputCommand = new RelayCommand(UpdateUserInput);
+            SaveGameCommand = new RelayCommand(SaveGame);
 
         }
 
@@ -66,6 +69,7 @@ namespace Wordle.ViewModels
             this.gameEntityFactory = gameEntityFactory ?? throw new ArgumentNullException(nameof(gameEntityFactory));
             ResumeGame(gameEntity);
             UpdateUserInputCommand = new RelayCommand(UpdateUserInput);
+            SaveGameCommand = new RelayCommand(SaveGame);
 
             Console.WriteLine("GameEntityCodes " + gameEntity.Codes.Length);
 
@@ -76,6 +80,13 @@ namespace Wordle.ViewModels
         #endregion
 
         #region methods
+
+        private void SaveGame()
+        {
+            GameService gameService = new GameService();
+            gameService.updateLastGamePlayedByUser(GameEntity,out errorMessage);
+
+        }
 
         private async void UpdateUserInput()
         {

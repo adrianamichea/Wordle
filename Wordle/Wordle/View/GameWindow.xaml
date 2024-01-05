@@ -33,6 +33,7 @@
         <TextBlock Text="Please introduce a five-letter word:" Margin="64,10,501,371" Grid.RowSpan="2"/>
         <TextBox Text="{Binding UserInput}" MaxLength="5" Margin="318,9,370,371" Grid.RowSpan="2" />
         <Button Content="Enter" Command="{Binding UpdateUserInputCommand}" Margin="496,9,216,372" Grid.RowSpan="2"/>
+        <Button Content="Save Game" Command="{Binding SaveGameCommand}" Margin="616,214,54,167"/>
 
         <TextBox Text="{Binding GameEntity.Attempts[0][0], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="184,102,526,267" Tag="{Binding GameEntity.Codes[0][0]}"/>
         <TextBox Text="{Binding GameEntity.Attempts[0][1], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="254,102,455,267" Tag="{Binding GameEntity.Codes[0][1]}"/>
@@ -70,6 +71,6 @@
         <TextBox Text="{Binding GameEntity.Attempts[5][2], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="325,350,387,30" Tag="{Binding GameEntity.Codes[5][2]}"/>
         <TextBox Text="{Binding GameEntity.Attempts[5][3], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="397,350,316,30" Tag="{Binding GameEntity.Codes[5][3]}"/>
         <TextBox Text="{Binding GameEntity.Attempts[5][4], Mode=OneWay}" Style="{StaticResource TileStyle}" Margin="469,350,240,30" Tag="{Binding GameEntity.Codes[5][4]}"/>
-
+        
     </Grid>
 </Window>

@@ -110,6 +110,7 @@ END
 
 
 Insert into LastGame (UserID, SecretWord, Attempts, Codes)
-Values (1, 'crane', 'salsa,twirl', 'UUPUU,UUUPU');
+Values (1, 'CRANE', 'SALSA,TWIRL', 'UUPUU,UUUPU');
+
 
 

@@ -81,6 +81,7 @@ BEGIN
     WHERE UserID = @UserID;
 END
 
+--update last game. if user has no last game, insert a new one
 CREATE PROCEDURE UpdateLastGame
     @UserID INT,
     @SecretWord NVARCHAR(5),
@@ -90,14 +91,27 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    UPDATE LastGame
-    SET SecretWord = @SecretWord,
-        Attempts = @Attempts,
-        Codes = @Codes
+    DECLARE @LastGameCount INT;
+    SELECT @LastGameCount = COUNT(*)
+    FROM LastGame
     WHERE UserID = @UserID;
+
+    IF @LastGameCount = 0
+    BEGIN
+        INSERT INTO LastGame (UserID, SecretWord, Attempts, Codes)
+        VALUES (@UserID, @SecretWord, @Attempts, @Codes);
+    END
+    ELSE
+    BEGIN
+        UPDATE LastGame
+        SET SecretWord = @SecretWord,
+            Attempts = @Attempts,
+            Codes = @Codes
+        WHERE UserID = @UserID;
+    END
 END
 
-//get user id by username
+
 CREATE PROCEDURE GetUserID
     @UserName NVARCHAR(50)
 AS
@@ -109,8 +123,6 @@ BEGIN
 END
 
 
-Insert into LastGame (UserID, SecretWord, Attempts, Codes)
-Values (1, 'CRANE', 'SALSA,TWIRL', 'UUPUU,UUUPU');
 
 
 

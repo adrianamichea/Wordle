@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wordle.Models;
+using System.Windows;
 
 namespace Wordle.Services
 {
@@ -62,27 +63,28 @@ namespace Wordle.Services
         {
             errorMessage = null;
 
-            using (SqlConnection connection = _databaseConnection.GetConnection())
-            using (SqlCommand command = new SqlCommand("dbo.UpdateLastGame", connection))
-            {
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserID", gameEntity.UserID);
-                command.Parameters.AddWithValue("@SecretWord", gameEntity.SecretWord);
-                command.Parameters.AddWithValue("@Attempts", string.Join(",", gameEntity.Attempts));
-                command.Parameters.AddWithValue("@Codes", string.Join(",", gameEntity.Codes));
-                command.ExecuteNonQuery();
-
-                if (command.ExecuteScalar() == null)
+                using (SqlConnection connection = _databaseConnection.GetConnection())
+                using (SqlCommand command = new SqlCommand("dbo.UpdateLastGame", connection))
                 {
-                    return true;
-                }
-                else
-                {
-                    errorMessage = "Registration failed. Invalid username or password.";
-                    return false;
-                }
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UserID", gameEntity.UserID);
+                    command.Parameters.AddWithValue("@SecretWord", gameEntity.SecretWord);
+                    command.Parameters.AddWithValue("@Attempts", string.Join(",", gameEntity.Attempts));
+                    command.Parameters.AddWithValue("@Codes", string.Join(",", gameEntity.Codes));
+                    command.ExecuteNonQuery();
 
+                    if (command.ExecuteScalar() == null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        errorMessage = "Registration failed. Invalid username or password.";
+                        MessageBox.Show(errorMessage);
+                        return false;
+                    }
+
+                }
             }
-        }
     }
 }
